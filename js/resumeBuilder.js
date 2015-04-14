@@ -52,8 +52,20 @@ $("#header").append(formpic).append(formwel)
 
 
 
-
-
 var awesomeThoughts = "I am Matt, and I am awesome.";
 
 console.log(awesomeThoughts.replace("awesome", "fun"));
+
+
+var worknow = {
+}
+
+worknow.position = "Volunteer Supervisor";
+
+worknow.employer = "San Francisco Bicycle Coalition";
+
+worknow.location = "San Francisco";
+
+worknow.years = 3.5
+
+console.table(worknow)
