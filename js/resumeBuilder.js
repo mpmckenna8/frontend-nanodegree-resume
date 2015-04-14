@@ -87,5 +87,18 @@ var formWorkDesc = HTMLworkDescription.replace("%data%", worknow.description);
 
 
 
+
+
 $("#workExperience").append(formWorkLen).append(formWorkEm).append(formworkTit).append(formworkDate)
 .append(formWorkPlace).append(formWorkDesc)
+
+
+var edu = {};
+
+edu["name"] = 'City College of San Francisco';
+
+edu["years"] = "2012-2013";
+
+edu["degree"] = "GIS (Geographic Information Systems) Certification"
+
+$("#education").append(edu.name);
