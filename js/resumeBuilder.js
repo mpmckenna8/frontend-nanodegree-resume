@@ -66,6 +66,26 @@ worknow.employer = "San Francisco Bicycle Coalition";
 
 worknow.location = "San Francisco";
 
-worknow.years = 3.5
+worknow.years = '3.5 years';
+
+worknow.description = "Oversee field operations for the bicycle valet service while overseeing volunteers and coordinating operations at a wide variety of sites.";
 
 console.table(worknow)
+
+var formWorkLen = HTMLworkStart
+
+var formWorkEm = HTMLworkEmployer.replace("%data%", worknow.employer)
+
+var formworkDate = HTMLworkDates.replace("%data%", worknow.years);
+
+var formworkTit = HTMLworkTitle.replace("%data%", worknow.position);
+
+var formWorkPlace = HTMLworkLocation.replace("%data%", worknow.location)
+
+var formWorkDesc = HTMLworkDescription.replace("%data%", worknow.description);
+
+
+
+
+$("#workExperience").append(formWorkLen).append(formWorkEm).append(formworkTit).append(formworkDate)
+.append(formWorkPlace).append(formWorkDesc)
