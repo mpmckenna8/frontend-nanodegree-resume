@@ -195,3 +195,5 @@ $(document).click(function(loc){
   console.log(loc.clientX, loc.clientY);
   logClicks(loc.clientX,loc.clientY);
   });
+
+  var exp;
