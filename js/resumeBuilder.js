@@ -196,4 +196,4 @@ $(document).click(function(loc){
   logClicks(loc.clientX,loc.clientY);
   });
 
-  var exp;
+  var exp= 'maybe it ll work';
