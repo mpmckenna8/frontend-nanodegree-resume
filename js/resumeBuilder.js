@@ -1,6 +1,6 @@
 
 var bio = {
-  name: "Matthew Philip McKenna",
+  name: "Matthew McKenna",
   role: "Digital Cartographer",
   pic:"images/mee.jpg",
   welcome:"Get in touch if you have any questions my resume doesn't answer!",
@@ -176,6 +176,34 @@ var projects = {projects:[{
     ]
   }]}
 
+  var baseball = new Project
+
+  baseball.title = "MLB World Series Column Chart";
+  baseball.dates = "October 2014";
+  baseball.description = "Major League Baseball World series total wins column chart with map showing current franchise locations.";
+  baseball.url = "http://mpmckenna8.github.io/chartMap/index.html";
+  baseball.images = [];
+
+  console.log(baseball)
+projects.projects.push(baseball);
+
+projects.display = function(){
+  console.log(this)
+  var projdiv = $("#projects")
+  for(i in this.projects){
+    console.log(this.projects[i])
+
+    projdiv.append(HTMLprojectStart);
+
+    $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", this.projects[i].title).replace("#", this.projects[i].url)
+    + HTMLprojectDates.replace("%data%", this.projects[i].dates)
+     + HTMLprojectDescription.replace("%data%", this.projects[i].description) )
+
+
+  }
+}
+projects.display()
+
 
 function displayWork(work,i){
   console.log('gonna add some jobs', i)
@@ -196,4 +224,16 @@ $(document).click(function(loc){
   logClicks(loc.clientX,loc.clientY);
   });
 
-  var exp= 'maybe it ll';
+$("#main").append(internationalizeButton);
+
+function inName(name){
+  var spliced = bio.name.split(" ");
+  console.log(spliced[0] + " " + spliced[1].toUpperCase())
+  return spliced[0] + " " + spliced[1].toUpperCase()
+}
+
+function Project(){
+  this.title;
+  this.dates;
+
+}
