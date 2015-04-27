@@ -125,8 +125,19 @@ var projects = {projects:[{
   console.log(baseball)
 projects.projects.push(baseball);
 
+// data ended not to do a octo
 
+var octo = {
+  getbio: function(){
+    return bio
+  },
+  
 
+}
+
+var view = {
+
+}
 projects.display = function(){
   console.log(this)
   var projdiv = $("#projects")
