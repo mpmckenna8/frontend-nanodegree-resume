@@ -1,4 +1,4 @@
-
+// Datas I'm going to have multiple so the helper s
 var bio = {
   name: "Matthew McKenna",
   role: "Digital Cartographer",
@@ -9,59 +9,14 @@ var bio = {
     twitter:"mpmckenna8",
     mobile:"Please contact by e-mail to obtain mobile #",
     email:"mpmckenna8@me.com",
-    github:"mpmckenna8"
+    github:"mpmckenna8",
+    location:"San Francisco"
   },
 }
 
-var formatName = HTMLheaderName.replace("%data%", bio.name);
-console.log(formatName);
-$("#header").append([formatName]);
-
-var formatRole = HTMLheaderRole.replace("%data%", bio.role);
-
-$("#header").append(formatRole);
 
 
-var formatCon = HTMLcontactGeneric.replace("%data%", bio.contact).replace("%contact%", "Best to contact by:");
-
-var forMob = HTMLmobile.replace("%data%", bio.mobile);
-
-var formatemail = HTMLemail.replace("%data%", bio.email);
-
-var formtwit = HTMLtwitter.replace("%data%", bio.twitter);
-
-
-var formskills = [];
-for(i in bio.skills){
-  console.log(i)
-  formskills.push(HTMLskills.replace("%data%", bio.skills[i]))
-
-}
-
-var formskillsStart = HTMLskillsStart;
-
-$("#header").append(formatCon).append(formatemail).append(forMob).append(formtwit)
-
-if(bio.skills.length > 0 ){
-
-$("#header").append(formskillsStart)//.append(formskills);
-  $("#skills").append(formskills)
-
-
-}
-console.log(formskills)
-
-var formpic = HTMLbioPic.replace("%data%", bio.pic);
-
-var formwel = HTMLwelcomeMsg.replace("%data%", bio.welcome)
-
-$("#header").append(formpic).append(formwel)
-
-
-
-
-
-
+// work data basically has a jobs array
 var work = {jobs:[]
 }
 
@@ -78,17 +33,6 @@ worknow.description = "Oversee field operations for the bicycle valet service wh
 
 console.table(worknow)
 
-var formWorkLen = HTMLworkStart
-
-var formWorkEm = HTMLworkEmployer.replace("%data%", worknow.employer)
-
-var formworkDate = HTMLworkDates.replace("%data%", worknow.years);
-
-var formworkTit = HTMLworkTitle.replace("%data%", worknow.position);
-
-var formWorkPlace = HTMLworkLocation.replace("%data%", worknow.location)
-
-var formWorkDesc = HTMLworkDescription.replace("%data%", worknow.description);
 
 work.jobs.push(worknow);
 var wornow = {};
@@ -126,17 +70,8 @@ cof.addtowork();
 
 console.log(cof)
 
-var soap;
 
-for(i in work.jobs){
-  displayWork(work, i)
-
-}
-
-//$("#workExperience").append(formWorkLen).append(formWorkEm).append(formworkTit).append(formworkDate).append(formWorkPlace).append(formWorkDesc)
-
-
-var edu = {"schools":[],
+var education = {"schools":[],
             "onlineCourses":[{
               "title":"JavaScript Basics",
               "school":"Udacity",
@@ -144,17 +79,20 @@ var edu = {"schools":[],
               "dates":"April 2014"}
             ]};
 
-edu.schools.push({"city":"San Francisco"})
+education.schools.push({"location":"San Francisco, CA"})
 
-edu.schools[0]["name"] = 'City College of San Francisco';
+education.schools[0]["name"] = 'City College of San Francisco';
 
-edu.schools[0]["years"] = "2012-2013";
+education.schools[0]["years"] = "2012-2013";
 
-edu.schools[0]["degree"] = "GIS (Geographic Information Systems) Certification"
+education.schools[0]["degree"] = "GIS (Geographic Information Systems) Certification"
 
-edu.schools.push({"name":"University of Wisconsin",
-"city":"Madison", "degree":"BA of International Studies", "years": "2004-2008"})
+education.schools.push({"name":"University of Wisconsin",
+"location":"Madison, WI", "degree":"BA", "major":"International Studies", "years": "2004-2008"})
 //console.log(JSON.stringify(edu));
+
+education.schools[0]["major"]  = "Geographic Information Systems"
+
 
 
 var projects = {projects:[{
@@ -187,6 +125,8 @@ var projects = {projects:[{
   console.log(baseball)
 projects.projects.push(baseball);
 
+
+
 projects.display = function(){
   console.log(this)
   var projdiv = $("#projects")
@@ -195,14 +135,103 @@ projects.display = function(){
 
     projdiv.append(HTMLprojectStart);
 
+
+
     $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", this.projects[i].title).replace("#", this.projects[i].url)
     + HTMLprojectDates.replace("%data%", this.projects[i].dates)
      + HTMLprojectDescription.replace("%data%", this.projects[i].description) )
 
+     if(projects.projects[i].images.length > 0){
+       for (image in projects.projects[i].images){
+         var formimage = HTMLprojectImage.replace("%data%", projects.projects[i].images[image].url);
+         $(".project-entry:last").append(formimage)
+       }
+     }
+
 
   }
 }
-projects.display()
+projects.display();
+
+
+var formatName = HTMLheaderName.replace("%data%", bio.name);
+console.log(formatName);
+
+
+var formatRole = HTMLheaderRole.replace("%data%", bio.role);
+
+$("#header").prepend(formatRole);
+$("#header").prepend([formatName]);
+
+//var formatCon = HTMLcontactGeneric.replace("%data%", bio.contacts.mobile).replace("%contact%", "Best to contact by:");
+
+var forMob = HTMLmobile.replace("%data%", bio.contacts.mobile);
+
+var formatemail = HTMLemail.replace("%data%", bio.contacts.email);
+
+var formtwit = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+
+
+var formskills = [];
+for(i in bio.skills){
+  console.log(i)
+  formskills.push(HTMLskills.replace("%data%", bio.skills[i]))
+
+}
+
+var formskillsStart = HTMLskillsStart;
+
+$("#topContacts")
+.append(formatemail).append(forMob).append(formtwit)  //.append(formatCon)
+
+if(bio.skills.length > 0 ){
+
+$("#header").append(formskillsStart)//.append(formskills);
+  $("#skills").append(formskills)
+
+
+}
+
+console.log(formskills)
+
+var formpic = HTMLbioPic.replace("%data%", bio.pic);
+
+var formwel = HTMLwelcomeMsg.replace("%data%", bio.welcome)
+
+$("#header").append(formpic).append(formwel)
+
+
+var soap;
+
+for(i in work.jobs){
+  displayWork(work, i)
+
+}
+
+//$("#workExperience").append(formWorkLen).append(formWorkEm).append(formworkTit).append(formworkDate).append(formWorkPlace).append(formWorkDesc)
+education.init = function(){
+  console.log(this)
+
+  var edudiv = $("#education");
+  for( ble in this.schools){
+    edudiv.append(HTMLschoolStart);
+
+    var hoo = this.schools[ble];
+    var name = HTMLschoolName.replace("%data%", hoo.name);
+    var degree = HTMLschoolDegree.replace("%data%", hoo.degree);
+    var dates = HTMLschoolDates.replace("%data%", hoo.years);
+    var loca = HTMLschoolLocation.replace("%data%", hoo.location );
+    var major = HTMLschoolMajor.replace("%data%", hoo.major);
+    var allofit = name + degree + dates + loca + major;
+    $(".education-entry:last").append(allofit)
+  }
+
+}
+
+education.init();
+education.displayone = function(){
+
+}
 
 
 function displayWork(work,i){
@@ -237,3 +266,5 @@ function Project(){
   this.dates;
 
 }
+
+$("#mapDiv").append(googleMap)
